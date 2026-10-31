@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIME ADDICT | Coaching Privé & Dépassement de Soi</title>
+    <meta name="description" content="Coaching privé pour atteindre vos objectifs physiques et mentaux. Programmes sur-mesure, suivi personnalisé et état d'esprit d'élite au Mans (72).">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (Icônes) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- VARIABLES COULEURS --- */
+        :root {
+            --noir: #0A0B0B;
+            --vert-petrole: #122929;
+            --vert-emeraude: #1D3535;
+            --cuivre: #B97454;
+            --texte-clair: #E5E7EB;
+            --texte-gris: #9CA3AF;
+            --white: #FFFFFF;
+        }
+
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--noir); 
+            color: var(--texte-clair); 
+            line-height: 1.6; 
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: rgba(10, 11, 11, 0.95);
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            border-bottom: 1px solid rgba(185, 116, 84, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        .nav-container {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1200px; margin: 0 auto; 
+            padding: 20px 20px;
+        }
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        
+        .logo-img { height: 80px; width: auto; border-radius: 50%; }
+        
+        .logo-text { 
+            font-family: 'Outfit', sans-serif; 
+            font-weight: 800; 
+            font-size: 1.6rem; 
+            color: var(--white); 
+            letter-spacing: 3px; 
+        }
+        .logo-text span { color: var(--cuivre); }
+        
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--texte-clair); }
+        .nav-links a:hover { color: var(--cuivre); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(10, 11, 11, 0.85), rgba(18, 41, 41, 0.9)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop') center/cover;
+            position: relative;
+            padding-top: 100px;
+        }
+        .hero-content { max-width: 1000px; padding: 20px; }
+        
+        .hero h1 { font-size: 2.8rem; color: var(--white); margin-bottom: 20px; line-height: 1.3; font-weight: 400; }
+        .hero h1 strong { font-weight: 600; color: var(--cuivre); }
+        .hero h1 .same-size { display: block; color: var(--white); margin-top: 5px; }
+        
+        .hero p { font-size: 1.1rem; color: var(--texte-gris); margin-bottom: 40px; font-weight: 300; max-width: 700px; margin-left: auto; margin-right: auto;}
+        
+        .btn {
+            display: inline-block; padding: 15px 35px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px;
+            border-radius: 4px; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 0.9rem;
+        }
+        .btn-primary { background-color: var(--cuivre); color: var(--noir); border: 2px solid var(--cuivre); }
+        .btn-primary:hover { background-color: transparent; color: var(--cuivre); }
+        .btn-outline { background-color: transparent; color: var(--white); border: 2px solid var(--white); margin-left: 15px; }
+        .btn-outline:hover { background-color: var(--white); color: var(--noir); }
+
+        /* --- SECTION SERVICES --- */
+        .services-section { padding: 100px 0; background-color: var(--vert-petrole); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--white); margin-bottom: 10px; font-weight: 400;}
+        .section-header p { color: var(--texte-gris); font-size: 1.1rem; font-weight: 300;}
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-card {
+            background-color: var(--vert-emeraude);
+            padding: 40px 30px;
+            border-radius: 8px;
+            border-top: 2px solid var(--cuivre);
+            transition: transform 0.3s;
+        }
+        .service-card:hover { transform: translateY(-10px); }
+        .service-card i { font-size: 2rem; color: var(--cuivre); margin-bottom: 20px; }
+        .service-card h3 { font-size: 1.3rem; color: var(--white); margin-bottom: 15px; font-weight: 500;}
+        .service-card p { color: var(--texte-gris); font-size: 0.95rem; margin-bottom: 20px; font-weight: 300;}
+        .service-card ul { list-style: none; }
+        .service-card ul li { color: var(--texte-clair); margin-bottom: 10px; font-size: 0.9rem; display: flex; align-items: center; gap: 10px; font-weight: 300;}
+        .service-card ul li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--cuivre); font-size: 0.8rem; }
+
+        /* --- NOUVELLE SECTION NUTRITION --- */
+        .nutrition-section { padding: 100px 0; background-color: var(--noir); }
+        .nutrition-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin-bottom: 50px; }
+        
+        .nutrient-card {
+            background-color: var(--vert-petrole);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            border-bottom: 3px solid var(--cuivre);
+        }
+        .nutrient-card i { font-size: 2.5rem; color: var(--cuivre); margin-bottom: 15px; }
+        .nutrient-card h3 { color: var(--white); font-size: 1.2rem; margin-bottom: 10px; }
+        .nutrient-card p { color: var(--texte-gris); font-size: 0.9rem; font-weight: 300; }
+        
+        /* Bannière de mise en avant pour la future restauration */
+        .restaurant-banner {
+            background: linear-gradient(rgba(18, 41, 41, 0.9), rgba(18, 41, 41, 0.9)), url('https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=1470&auto=format&fit=crop') center/cover;
+            border-radius: 8px;
+            padding: 60px 40px;
+            text-align: center;
+            border: 1px solid var(--cuivre);
+            position: relative;
+            overflow: hidden;
+        }
+        .restaurant-banner h3 { color: var(--cuivre); font-size: 2rem; margin-bottom: 15px; }
+        .restaurant-banner p { color: var(--white); font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px auto; font-weight: 300;}
+        .badge-coming-soon {
+            display: inline-block;
+            background-color: var(--cuivre);
+            color: var(--noir);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        /* --- SECTION À PROPOS / PHILOSOPHIE --- */
+        .about-section { padding: 100px 0; background-color: var(--vert-petrole); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-text h2 { font-size: 2.5rem; color: var(--white); margin-bottom: 20px; font-weight: 400; line-height: 1.2;}
+        .about-text h2 span { color: var(--cuivre); }
+        .about-text p { color: var(--texte-gris); font-size: 1.1rem; margin-bottom: 20px; font-weight: 300;}
+        .quote-box {
+            border-left: 2px solid var(--cuivre);
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+        .about-img {
+            width: 100%; height: 500px;
+            background: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1470&auto=format&fit=crop') center/cover;
+            border-radius: 8px;
+            border: 1px solid var(--vert-emeraude);
+        }
+
+        /* --- SECTION MOTIVATION / MOODBOARD --- */
+        .testimonials-section { padding: 100px 0; background-color: var(--noir); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
+        .testimonial-card {
+            background-color: var(--vert-emeraude);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        .testimonial-card:hover { transform: translateY(-5px); }
+        
+        .motivation-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .motivation-image::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(10, 11, 11, 0.3), rgba(10, 11, 11, 0.9));
+        }
+        
+        .motivation-text-overlay { position: absolute; bottom: 20px; left: 20px; right: 20px; z-index: 1; }
+        .motivation-text-overlay h4 { color: var(--cuivre); font-size: 1.2rem; margin-bottom: 5px; font-family: 'Outfit', sans-serif; }
+        .motivation-text-overlay p { color: var(--white); font-size: 0.95rem; font-style: italic; font-weight: 300; }
+
+        .testimonial-content { padding: 30px; }
+        .stars { color: var(--cuivre); margin-bottom: 15px; font-size: 0.9rem; }
+        .testimonial-text { font-style: italic; color: var(--texte-gris); margin-bottom: 20px; font-size: 0.95rem; font-weight: 300;}
+        .testimonial-author { font-family: 'Outfit', sans-serif; font-weight: 600; color: var(--white); text-transform: uppercase; letter-spacing: 1px; }
+        .testimonial-goal { color: var(--cuivre); font-size: 0.85rem; font-weight: 400; margin-top: 5px; display: block;}
+
+
+        /* --- SECTION CONTACT --- */
+        .contact-section { padding: 100px 0; background-color: var(--vert-petrole); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .contact-info h2 { font-size: 2.5rem; color: var(--white); margin-bottom: 20px; font-weight: 400;}
+        .contact-info p { color: var(--texte-gris); margin-bottom: 30px; font-size: 1.1rem; font-weight: 300;}
+        .contact-details { margin-bottom: 30px; }
+        .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; font-size: 1rem; font-weight: 300;}
+        .contact-item i { color: var(--cuivre); font-size: 1.2rem; width: 30px; text-align: center; }
+        .contact-item a { color: var(--white); font-weight: 400; }
+        .contact-item a:hover { color: var(--cuivre); }
+        
+        .contact-form { display: flex; flex-direction: column; gap: 20px; }
+        .contact-form input, .contact-form textarea {
+            width: 100%; padding: 15px; background-color: var(--vert-emeraude); border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 4px; color: var(--white); font-family: 'Inter', sans-serif; outline: none; font-weight: 300;
+        }
+        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--cuivre); }
+        .contact-form textarea { height: 150px; resize: vertical; }
+        .contact-form button { width: 100%; }
+
+        /* --- FOOTER --- */
+        footer { background-color: #050606; padding: 40px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer .logo-text { margin-bottom: 15px; display: inline-block; font-size: 1.3rem; }
+        footer p { color: var(--texte-gris); font-size: 0.9rem; margin-bottom: 10px; font-weight: 300;}
+        footer .socials a { color: var(--texte-clair); font-size: 1.2rem; margin: 0 10px; }
+        footer .socials a:hover { color: var(--cuivre); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.2rem; }
+            .about-grid, .contact-grid, .nutrition-grid { grid-template-columns: 1fr; }
+            .about-img { height: 300px; }
+            .logo-img { height: 60px; }
+            .restaurant-banner h3 { font-size: 1.5rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; } 
+            .hero h1 { font-size: 1.8rem; }
+            .btn-outline { margin-left: 0; margin-top: 15px; display: block; }
+            .motivation-image { height: 250px; }
+            .logo-img { height: 50px; }
+            .logo-text { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo-container">
+                <img src="logo.jpg" alt="Prime Addict Logo" class="logo-img" onerror="this.style.display='none'">
+                <div class="logo-text"><span>PRIME</span> ADDICT</div>
+            </a>
+            <div class="nav-links">
+                <a href="#services">Programmes</a>
+                <a href="#nutrition">Nutrition</a>
+                <a href="#apropos">À propos</a>
+                <a href="#temoignages">Mindset</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>
+                LA MOTIVATION TE FAIT <strong>COMMENCER</strong>.<br>
+                LA <strong>DISCIPLINE</strong> TE FAIT CONTINUER.<br>
+                <span class="same-size">LES <strong>HABITUDES</strong> TE RENDENT LIBRE.</span>
+            </h1>
+            <p>Prime Addict construit les trois, avec toi. Rejoins l'élite et deviens la meilleure version de toi-même.</p>
+            <a href="#contact" class="btn btn-primary">Commencer maintenant</a>
+            <a href="#services" class="btn btn-outline">Découvrir les programmes</a>
+        </div>
+    </header>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Le Coffre à Outils</h2>
+                <p>Des ressources gratuites pour commencer, un coaching privé pour transcender tes limites.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fa-solid fa-book-open"></i>
+                    <h3>L'Académie (Gratuit)</h3>
+                    <p>Accède à nos guides, conseils et méthodes pour structurer ton mental et ton physique dès aujourd'hui.</p>
+                    <ul>
+                        <li>Guides PDF sur la nutrition</li>
+                        <li>Conseils de discipline</li>
+                        <li>Routines de base</li>
+                    </ul>
+                </div>
+
+                <div class="service-card" style="border-top-color: var(--white);">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <h3>Coaching Privé</h3>
+                    <p>Un accompagnement complet et sur-mesure. Nous adaptons le programme à ton niveau et à ton emploi du temps.</p>
+                    <ul>
+                        <li>Bilan complet physique & mental</li>
+                        <li>Programme 100% personnalisé</li>
+                        <li>Suivi régulier et ajustements</li>
+                        <li>Accès prioritaire à l'expert</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fa-solid fa-dumbbell"></i>
+                    <h3>Programmes Ciblés</h3>
+                    <p>Que tu cherches à prendre du muscle, perdre du poids ou retrouver la forme, nous avons le protocole exact.</p>
+                    <ul>
+                        <li>Musculation & Hypertrophie</li>
+                        <li>Remise en forme globale</li>
+                        <li>Perte de poids & Sèche</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOUVELLE SECTION NUTRITION -->
+    <section id="nutrition" class="nutrition-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Fuel & Nutrition</h2>
+                <p>Tu ne peux pas surpasser une mauvaise alimentation. La nutrition est le carburant de ta transformation.</p>
+            </div>
+            
+            <div class="nutrition-grid">
+                <div class="nutrient-card">
+                    <i class="fa-solid fa-drumstick-bite"></i>
+                    <h3>Protéines</h3>
+                    <p>Les blocs de construction de tes muscles. Indispensables pour la récupération et la prise de masse.</p>
+                </div>
+                <div class="nutrient-card">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                    <h3>Glucides Complexes</h3>
+                    <p>Ton énergie pour les séances intenses. Ils rechargent le glycogène et soutiennent ta performance.</p>
+                </div>
+                <div class="nutrient-card">
+                    <i class="fa-solid fa-seedling"></i>
+                    <h3>Bonnes Graisses</h3>
+                    <p>Essentielles pour ton équilibre hormonal (testostérone) et la santé de tes articulations.</p>
+                </div>
+            </div>
+
+            <!-- Bannière Restauration -->
+            <div class="restaurant-banner">
+                <div class="badge-coming-soon">Bientôt disponible</div>
+                <h3>Le Restaurant Prime Addict</h3>
+                <p>Nous préparons une carte de repas sur-mesure, adaptée à vos objectifs (Prise de masse, Sèche, Équilibre). Des produits frais, des macros calculées et un goût incomparable, directement dans votre salle.</p>
+                <a href="#contact" class="btn btn-outline">Être prévenu de l'ouverture</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- À PROPOS SECTION -->
+    <section id="apropos" class="about-section">
+        <div class="container about-grid">
+            <div class="about-text">
+                <h2>Plus qu'une marque. <br><span>Un état d'esprit.</span></h2>
+                <p>Basé au Mans (72), PRIME ADDICT n'est pas juste un programme de fitness. C'est une refonte totale de ta façon de penser et d'agir.</p>
+                <div class="quote-box">
+                    "Le dépassement de soi n'est pas une option, c'est une nécessité pour ceux qui veulent laisser une trace."
+                </div>
+                <p>Nous croyons que le physique est le reflet du mental. En forgeant votre corps, vous forgez votre esprit. Nous vous fournissons la structure, la connaissance et la responsabilisation nécessaires pour que vous ne soyez plus jamais le même.</p>
+            </div>
+            <div class="about-img"></div>
+        </div>
+    </section>
+
+    <!-- SECTION MINDSET / MOTIVATION -->
+    <section id="temoignages" class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Le Mindset Prime</h2>
+                <p>Le physique change, le mental se forge. Voici l'état d'esprit de ceux qui ont accepté le défi.</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- Citation 1 -->
+                <div class="testimonial-card">
+                    <div class="motivation-image" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop');">
+                        <div class="motivation-text-overlay">
+                            <h4>LUCAS M.</h4>
+                            <p>"J'ai perdu 12 kg, mais j'ai surtout gagné une force mentale que je ne connaissais pas."</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p class="testimonial-text">"J'avais tout essayé avant. Le coaching de Prime Addict m'a donné la structure qui me manquait. La discipline au quotidien a tout changé."</p>
+                        <div class="testimonial-author">Lucas M.</div>
+                        <span class="testimonial-goal">Objectif : Perte de poids</span>
+                    </div>
+                </div>
+
+                <!-- Citation 2 -->
+                <div class="testimonial-card">
+                    <div class="motivation-image" style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1000&auto=format&fit=crop');">
+                        <div class="motivation-text-overlay">
+                            <h4>THOMAS R.</h4>
+                            <p>"Le programme sur-mesure et le suivi rigoureux m'ont permis de prendre 8 kg de muscle sec."</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p class="testimonial-text">"Je stagnais depuis des années. J'ai enfin compris que la régularité et les bonnes habitudes battent le talent. La discipline paye toujours."</p>
+                        <div class="testimonial-author">Thomas R.</div>
+                        <span class="testimonial-goal">Objectif : Prise de masse</span>
+                    </div>
+                </div>
+
+                <!-- Citation 3 -->
+                <div class="testimonial-card">
+                    <div class="motivation-image" style="background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1000&auto=format&fit=crop');">
+                        <div class="motivation-text-overlay">
+                            <h4>SARAH B.</h4>
+                            <p>"Ce n'est pas juste du sport, c'est une thérapie. J'ai appris à aimer l'effort."</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p class="testimonial-text">"Mon corps a changé, mais ma vision de la vie aussi. Prime Addict m'a appris à transformer mes habitudes pour être libre. Merci."</p>
+                        <div class="testimonial-author">Sarah B.</div>
+                        <span class="testimonial-goal">Objectif : Remise en forme</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+        <div class="container contact-grid">
+            <div class="contact-info">
+                <h2>Prêt à <span style="color: var(--cuivre);">évoluer</span> ?</h2>
+                <p>Prends le contrôle. Contacte-nous pour discuter de tes objectifs et mettre en place ton plan d'action.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Le Mans (72), France</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:primeaddict22@gmail.com">primeaddict22@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-brands fa-instagram"></i>
+                        <a href="https://instagram.com/primeaddict22" target="_blank">@primeaddict22</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form action="https://formsubmit.co/primeaddict22@gmail.com" method="POST">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="Nouvelle demande de coaching - Prime Addict">
+                    
+                    <input type="text" name="Nom" placeholder="Ton Nom / Prénom" required>
+                    <input type="email" name="Email" placeholder="Ton adresse Email" required>
+                    <textarea name="Message" placeholder="Décris tes objectifs, ton niveau actuel et ce que tu attends du coaching..." required></textarea>
+                    <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="logo-text"><span>PRIME</span> ADDICT</div>
+            <p>La motivation te fait commencer. La discipline te fait continuer. Les habitudes te rendent libre.</p>
+            
+            <div class="socials">
+                <a href="https://instagram.com/primeaddict22" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            
+            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6;">
+                &copy; 2026 PRIME ADDICT. Tous droits réservés. Basé au Mans (72).
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
